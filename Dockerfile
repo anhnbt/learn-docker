@@ -1,7 +1,10 @@
 FROM ubuntu:22.04
 
-LABEL author.name=bkacad
+LABEL author.name="bkacad"
 LABEL author.email=devops@bkacad.edu.com.vn
+
+ENV TZ=Asia/Ho_Chi_Minh
+
 RUN apt-get update
 RUN apt-get install -y apache2
 RUN apt-get install -y vim
