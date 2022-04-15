@@ -3,13 +3,13 @@ FROM ubuntu:22.04
 LABEL author.name="bkacad"
 LABEL author.email=devops@bkacad.edu.com.vn
 
+RUN apt-get update -y && \
+    apt-get install curl -y && \
+    apt-get install apache2 -y && \
+    apt-get install vim -y && \
+    apt-get install git -y
+
 ENV TZ=Asia/Ho_Chi_Minh
-
-RUN apt-get update
-RUN apt-get install -y apache2
-RUN apt-get install -y vim
-RUN apt-get install -y git
-
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_RUN_DIR /var/lib/apache/runtime
@@ -22,6 +22,7 @@ ENV APACHE_DOCUMENTROOT /var/www/html
 
 WORKDIR /var/www/html
 COPY docker.html .
+
 EXPOSE 80
 
 ENTRYPOINT ["/usr/sbin/apache2"]
